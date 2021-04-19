@@ -7,5 +7,10 @@ export default function useSearch() {
         setSearchText(input);
     }
 
+    const handleSearchClick = (e) => {
+        e.preventDefault();
+        console.log(searchText);
+    }
 
+    return { handleSearchChange, handleSearchClick };
 }

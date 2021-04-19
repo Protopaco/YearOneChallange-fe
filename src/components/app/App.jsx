@@ -4,16 +4,17 @@ import {
   Route,
   Switch
 } from "react-router-dom";
+import Header from "../Header/Header"
 
 export default function App() {
   return (
     <Router>
       <Switch>
         <Header />
-        <Route
+        {/* <Route
           exact
           path="/"
-          component={SearchPage} />
+          component={SearchPage} /> */}
       </Switch>
     </Router>
   )
