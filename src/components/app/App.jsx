@@ -4,17 +4,24 @@ import {
   Route,
   Switch
 } from "react-router-dom";
-import Header from "../Header/Header"
+import Header from "../Header/Header";
+import LandingPage from "../LandingPage/LandingPage";
+import SearchResults from "../SearchResults/SearchResults";
+
 
 export default function App() {
   return (
     <Router>
+      <Header />
       <Switch>
-        <Header />
-        {/* <Route
+        <Route
           exact
           path="/"
-          component={SearchPage} /> */}
+          component={LandingPage} />
+        <Route
+          exact
+          path="/search/:searchText"
+          component={SearchResults} />
       </Switch>
     </Router>
   )

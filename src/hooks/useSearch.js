@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function useSearch() {
+    const history = useHistory();
     const [searchText, setSearchText] = useState("");
 
     const handleSearchChange = (input) => {
@@ -9,8 +11,8 @@ export default function useSearch() {
 
     const handleSearchClick = (e) => {
         e.preventDefault();
-        console.log(searchText);
+        history.push(`/search/${searchText}`)
     }
 
-    return { handleSearchChange, handleSearchClick };
+    return { handleSearchChange, handleSearchClick, searchText };
 }
