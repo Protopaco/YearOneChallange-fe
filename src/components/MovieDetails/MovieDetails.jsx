@@ -13,9 +13,9 @@ export default function MovieDetails({ movieObj, handleCloseDetails }) {
     const classes = useStyles();
 
     useEffect(() => {
+
         fetchVotes(netflixid)
             .then(response => {
-                console.log(response)
                 setUpVotes(response.upVotes);
                 setDownVotes(response.downVotes);
             })
@@ -52,7 +52,7 @@ export default function MovieDetails({ movieObj, handleCloseDetails }) {
                     variant="h5"
                     color="textPrimary"
                     className={classes.title}>
-                    {title}
+                    {title.replace("&#39;", "'")}
                 </Typography>
                 <ul
                     className={classes.chips}>
@@ -71,7 +71,7 @@ export default function MovieDetails({ movieObj, handleCloseDetails }) {
                 </ul>
                 <Typography
                     className={classes.synopsis}>
-                    {synopsis}
+                    {synopsis.replace("&#39;", "'")}
                 </Typography>
                 <ul
                     className={classes.buttons}>

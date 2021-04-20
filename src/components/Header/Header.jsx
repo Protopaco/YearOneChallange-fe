@@ -12,7 +12,7 @@ export default function Header() {
                 <div
                     style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
                     <Typography>
-                        Welcome
+                        NETFLIX MOVIE SEARCH
                 </Typography>
                     <form
                         onSubmit={(e) => handleSearchClick(e)}>
@@ -21,10 +21,9 @@ export default function Header() {
                             variant="outlined"
                             label="Search"
                             onChange={({ target }) => handleSearchChange(target.value)}
-                            color="secondary"
                         />
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             id="search-button"
                             type="submit"
                             color="secondary"
@@ -34,6 +33,6 @@ export default function Header() {
                     </form>
                 </div>
             </Toolbar>
-        </AppBar>
+        </AppBar >
     )
 }

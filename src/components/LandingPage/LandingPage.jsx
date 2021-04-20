@@ -5,7 +5,7 @@ export default function LandingPage() {
 
     return (
         <div>
-            {"LandingPage"}
+            <img src="/Netflix_Logo_RGB.png" alt="netflix" style={{ width: "100vw" }} />
         </div>
     )
 }
