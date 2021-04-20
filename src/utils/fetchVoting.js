@@ -1,5 +1,5 @@
 import fetch from 'superagent';
-const serverUrl = process.env.REACT_SERVER_URL;
+const serverUrl = "https://year-one-movie-search.herokuapp.com/"
 
 export async function fetchVotes(netflixid) {
     const response = await fetch
