@@ -3,13 +3,15 @@ import { useParams } from 'react-router-dom'
 import { fetchResults } from '../../utils/fetchResults';
 import { GridList, Backdrop, CircularProgress } from "@material-ui/core"
 import MovieCard from "../MovieCard/MovieCard"
+import MovieDetails from "../MovieDetails/MovieDetails";
 
 export default function SearchResults() {
     const { searchText } = useParams();
     const [searchResults, setSearchResults] = useState([])
-    const [movieDetails, setmovieDetails] = useState({});
     const [loading, setLoading] = useState(true);
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(true);
+    const [openDetails, setOpenDetails] = useState(false)
+    const [currentDetails, setCurrentDetails] = useState({})
 
     useEffect(() => {
         fetchSearchResults();
@@ -20,6 +22,16 @@ export default function SearchResults() {
         console.log(searchResponse.ITEMS)
         setSearchResults(searchResponse.ITEMS);
         setOpen(false)
+    }
+
+    const handleCardClick = (movieObj) => {
+        setOpen(true);
+        setCurrentDetails(movieObj);
+        setLoading(false);
+    }
+
+    const handleCloseDetails = () => {
+        setOpen(false);
     }
 
     return (
@@ -33,6 +45,7 @@ export default function SearchResults() {
                         <MovieCard
                             key={movieObj.netflixid}
                             movieObj={movieObj}
+                            handleCardClick={handleCardClick}
                         />
                     ))
                     : null
@@ -45,7 +58,12 @@ export default function SearchResults() {
                     <CircularProgress
                         style={{ zIndex: 151 }}
                     />
-                    : null}
+                    :
+                    <MovieDetails
+                        movieObj={currentDetails}
+                        handleCloseDetails={handleCloseDetails}
+                    />
+                }
             </Backdrop>
         </div>
     )

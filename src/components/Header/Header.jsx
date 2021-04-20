@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { AppBar, Toolbar, Typography, TextField, Button } from "@material-ui/core";
 import useSearch from "../../hooks/useSearch";
 
 export default function Header() {
     const { handleSearchChange, handleSearchClick } = useSearch();
-
 
     return (
         <AppBar
