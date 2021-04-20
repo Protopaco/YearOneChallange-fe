@@ -1,5 +1,5 @@
 import fetch from 'superagent';
-const serverUrl = "http://localhost:7890/";
+const serverUrl = process.env.REACT_SERVER_URL;
 
 export async function fetchVotes(netflixid) {
     const response = await fetch
