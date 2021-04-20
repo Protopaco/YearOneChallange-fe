@@ -1,52 +1,9 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Chip, Typography, Avatar } from '@material-ui/core'
-import { makeStyles } from "@material-ui/core/styles"
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import CloseIcon from '@material-ui/icons/Close';
-
-const useStyles = makeStyles(() => ({
-    root: {
-        display: 'flex',
-        width: '50vw',
-        height: '35vh'
-    },
-    poster: {
-        width: '20vw'
-    },
-    content: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignContent: 'center',
-        width: '100%',
-    },
-    chips: {
-        display: "inline-flex",
-        justifyContent: "space-around",
-        listStyle: "none"
-    },
-    title: {
-        display: "flex",
-        justifyContent: "center"
-    },
-    buttons: {
-        display: "inline-flex",
-        justifyContent: "space-around",
-        listStyle: "none"
-    },
-    red: {
-        cursor: "pointer",
-        backgroundColor: 'red'
-    },
-    blue: {
-        cursor: "pointer",
-        backgroundColor: 'blue'
-    },
-    black: {
-        cursor: "pointer",
-        backgroundColor: 'black'
-    }
-}))
+import { useStyles } from "./MovieDetailsStyles";
 
 export default function MovieDetails({ movieObj, handleCloseDetails }) {
     const { image, rating, released, runtime, synopsis, title } = movieObj;
@@ -84,7 +41,8 @@ export default function MovieDetails({ movieObj, handleCloseDetails }) {
                             label={`Released: ${released}`} />
                     </li>
                 </ul>
-                <Typography>
+                <Typography
+                    className={classes.synopsis}>
                     {synopsis}
                 </Typography>
                 <ul
