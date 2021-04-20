@@ -9,7 +9,8 @@ export const useStyles = makeStyles(() => ({
         minHeight: "250px"
     },
     poster: {
-        width: '20vw'
+        width: '20vw',
+        minWidth: "150px"
     },
     content: {
         display: 'flex',
@@ -36,15 +37,18 @@ export const useStyles = makeStyles(() => ({
     },
     red: {
         cursor: "pointer",
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+        color: 'white'
     },
     blue: {
         cursor: "pointer",
-        backgroundColor: 'blue'
+        backgroundColor: 'blue',
+        color: 'white'
     },
     black: {
         cursor: "pointer",
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        color: 'white'
     }
 }))
 

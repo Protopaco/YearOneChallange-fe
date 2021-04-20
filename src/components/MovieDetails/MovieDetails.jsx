@@ -1,14 +1,41 @@
-import React from 'react';
-import { Card, CardContent, CardMedia, Chip, Typography, Avatar } from '@material-ui/core'
+import React, { useEffect, useState } from 'react';
+import { Card, CardContent, CardMedia, Chip, Typography, Avatar, Button } from '@material-ui/core'
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import CloseIcon from '@material-ui/icons/Close';
 import { useStyles } from "./MovieDetailsStyles";
-import { upVote, downVote } from "../../utils/fetchVoting";
+import { upVote, downVote, fetchVotes } from "../../utils/fetchVoting";
 
 export default function MovieDetails({ movieObj, handleCloseDetails }) {
     const { image, rating, released, runtime, synopsis, title, netflixid } = movieObj;
+    const [upVotes, setUpVotes] = useState(0);
+    const [downVotes, setDownVotes] = useState(0);
     const classes = useStyles();
+
+    useEffect(() => {
+        fetchVotes(netflixid)
+            .then(response => {
+                console.log(response)
+                setUpVotes(response.upVotes);
+                setDownVotes(response.downVotes);
+            })
+    }, [])
+
+    const handleUpVote = () => {
+        upVote(netflixid)
+            .then(response => {
+                setUpVotes(response.upVotes);
+                setDownVotes(response.downVotes);
+            })
+    }
+
+    const handleDownVote = () => {
+        downVote(netflixid)
+            .then(response => {
+                setUpVotes(response.upVotes);
+                setDownVotes(response.downVotes);
+            })
+    }
 
     return (
         <Card
@@ -49,25 +76,26 @@ export default function MovieDetails({ movieObj, handleCloseDetails }) {
                 <ul
                     className={classes.buttons}>
                     <li>
-                        <Avatar
+                        <Button
                             className={classes.red}
-                            onClick={() => upVote(netflixid)}>
-                            <ThumbUpIcon />
-                        </Avatar>
+                            onClick={handleUpVote}
+                            endIcon={<ThumbUpIcon />}>
+                            {upVotes}
+                        </Button>
                     </li>
                     <li>
-                        <Avatar
+                        <Button
                             className={classes.blue}
-                            onClick={() => downVote(netflixid)}>
-                            <ThumbDownIcon />
-                        </Avatar>
+                            onClick={handleDownVote}
+                            endIcon={<ThumbDownIcon />}>
+                            {downVotes}
+                        </Button>
                     </li>
                     <li>
-                        <Avatar
+                        <Button
                             className={classes.black}
-                            onClick={handleCloseDetails}>
-                            <CloseIcon />
-                        </Avatar>
+                            onClick={() => handleCloseDetails()}
+                            endIcon={<CloseIcon />} />
                     </li>
                 </ul>
 

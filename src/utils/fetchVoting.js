@@ -16,7 +16,7 @@ export async function upVote(netflixid) {
 }
 
 export async function downVote(netflixid) {
-    const response = await fetchVotes
+    const response = await fetch
         .post(`${serverUrl}vote/down/${netflixid}`)
 
     return response.body;

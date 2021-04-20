@@ -31,6 +31,8 @@ export default function SearchResults() {
     }
 
     const handleCloseDetails = () => {
+        setLoading(true)
+        setCurrentDetails(null);
         setOpen(false);
     }
 
