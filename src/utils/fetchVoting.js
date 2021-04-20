@@ -8,7 +8,7 @@ export async function fetchVotes(netflixid) {
     return response.body;
 }
 
-export async function upVote(newflixid) {
+export async function upVote(netflixid) {
     const response = await fetch
         .post(`${serverUrl}vote/up/${netflixid}`)
 

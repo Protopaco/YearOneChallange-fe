@@ -4,9 +4,10 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import CloseIcon from '@material-ui/icons/Close';
 import { useStyles } from "./MovieDetailsStyles";
+import { upVote, downVote } from "../../utils/fetchVoting";
 
 export default function MovieDetails({ movieObj, handleCloseDetails }) {
-    const { image, rating, released, runtime, synopsis, title } = movieObj;
+    const { image, rating, released, runtime, synopsis, title, netflixid } = movieObj;
     const classes = useStyles();
 
     return (
@@ -49,13 +50,15 @@ export default function MovieDetails({ movieObj, handleCloseDetails }) {
                     className={classes.buttons}>
                     <li>
                         <Avatar
-                            className={classes.red}>
+                            className={classes.red}
+                            onClick={() => upVote(netflixid)}>
                             <ThumbUpIcon />
                         </Avatar>
                     </li>
                     <li>
                         <Avatar
-                            className={classes.blue}>
+                            className={classes.blue}
+                            onClick={() => downVote(netflixid)}>
                             <ThumbDownIcon />
                         </Avatar>
                     </li>

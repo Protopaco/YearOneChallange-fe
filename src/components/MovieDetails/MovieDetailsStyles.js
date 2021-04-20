@@ -4,7 +4,9 @@ export const useStyles = makeStyles(() => ({
     root: {
         display: 'flex',
         width: '50vw',
-        height: '35vh'
+        height: '35vh',
+        minWidth: "750px",
+        minHeight: "250px"
     },
     poster: {
         width: '20vw'
